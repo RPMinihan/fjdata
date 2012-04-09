@@ -1,0 +1,21 @@
+<h1>Boxes</h1>
+
+<table border="1">
+<tr>
+<th>Box Name</th>
+
+<th>Modified</th>
+</tr>
+
+
+<% @list_archive.each {|file| %>
+	<tr><td>
+	<%= link_to file[:filename], "/boxes/show_files/?boxname=#{file[:filename]}"  %>
+	</td><td>
+	<%= file[:filetime] %>
+	</td>
+	</tr>
+<% } %>
+
+</table>
+

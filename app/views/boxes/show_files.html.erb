@@ -1,0 +1,33 @@
+<h1>Files in <%= params[:boxname] %></h1>
+
+<h2><%= link_to "Get WSP", "/boxes/mk_workspace/?boxname=#{params[:boxname]}/" %></h2>
+<div>
+<table border="1">
+<tr>
+<th>File Name</th>
+<th>File Size</th>
+<th>File Type</th>
+</tr>
+
+
+<% @list_archive.each {|file| %>
+	<tr><td>
+	<% unless file[:filetype].match("directory") %>
+	<%= link_to file[:filename], "/archive/#{params[:boxname]}/#{file[:filename]}" %>
+	<% else %>
+	<%= link_to file[:filename], "/boxes/show_files/?boxname=#{params[:boxname]}/#{file[:filename]}" %>
+	<% end %>
+	</td><td>
+	<%= file[:filesize] %>
+	</td><td>
+	<%= file[:filetype] %>
+	</td>
+	</tr>
+<% } %>
+
+</table>
+
+
+
+</div>
+

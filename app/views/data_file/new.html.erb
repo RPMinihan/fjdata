@@ -1,0 +1,29 @@
+<form name="uploadform" enctype="multipart/form-data" action="/data_file/upload" method="POST">
+    <p id="date"></p>
+
+    <fieldset>
+        <legend>Meta Info</legend>
+
+
+                <input type="hidden" name="MAX_FILE_SIZE" value="512000" />
+                <label for="username">Please enter your name</label>
+                <input type="text" id="username" name="username" size="50"/>
+                 <br />
+
+		<label for="boxname">Archive Name</label>
+		<input type="text" id="boxname" name="boxname" size="50"/><br />
+                <label for="notes">File Notes</label>
+                <textarea name="notes"></textarea>
+        <br />
+
+                <label for="userfile">FileName</label>
+                <input name="userfile" id="userfile" type="file" />
+        <br />
+
+                <input type="submit" name="submitbutton" value="Send File" />
+
+
+    </fieldset>
+
+</form>
+

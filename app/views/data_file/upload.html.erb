@@ -1,0 +1,36 @@
+<h1>Uploaded Files</h1>
+
+<div>
+<p>File Uploaded <%= @filename.to_s %></p>
+<p>User <%= @username %></p>
+
+<div id="notes">Notes<p><%= @notes %></p></div>
+<p>Size <%= @filesize %></p>
+<p>Content Type <%= @contenttype %></p>
+<p>Box Name <%= @boxname %></p>
+<table border="1">
+<tr>
+<th>File Name</th>
+<th>File Size</th>
+<th>File Type</th>
+</tr>
+
+
+<% @list_archive.each {|file| %>
+	<tr><td>
+	<%= file[:filename] %>
+	</td><td>
+	<%= file[:filesize] %>
+	</td><td>
+	<%= file[:filetype] %>
+	</td>
+	</tr>
+<% } %>
+
+</table>
+
+
+
+</div>
+
+

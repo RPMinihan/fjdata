@@ -1,0 +1,55 @@
+class BoxesController < ApplicationController
+  def index
+  @list_archive = Boxes.list
+  end
+	
+	def show_files
+	
+	myboxname = params[:boxname].to_s
+	if myboxname.empty? then myboxname = "default" end
+	@list_archive = Boxes.boxlist(myboxname)
+	
+	end
+	
+	def mk_workspace
+  
+
+
+	myboxname = params[:boxname].match(/^\w+/).to_s
+	@entries = Boxes.workspace_entries(myboxname)
+	#render :format => xml
+#	@xml
+	xml = ::Builder::XmlMarkup.new(indent: 2)
+	xml.instruct!
+	xml.Workspace do
+	xml.SampleList do
+	@entries.each {|entry|
+	  
+	  
+	    xml.Sample do
+			xml.DataSet(:uri => entry)
+			end
+		
+	              }
+	    end
+	 end
+	
+	
+	
+	
+	respond_to do |format|
+		format.xml { render :xml => xml.target! }
+		#format.html { render :xml => xml.target! }
+		format.html do
+		   send_data(xml.target!, :type=> "text/xml", :filename => myboxname + ".wsp")
+		end
+		end
+
+	
+	end
+	
+	
+  def edit
+  end
+end
+

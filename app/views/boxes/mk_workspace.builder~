@@ -1,0 +1,23 @@
+<h1>hi</h1>
+@xml = ::Builder::XmlMarkup.new(indent: 2)
+
+@xml.instruct!
+@xml.Workspace do
+	@xml.SampleList do
+		@xml.Sample do
+			@xml.DataSet(:uri => "http://fjdata.minihan.net/archive/sample/sample1.fcs")
+		end
+	end
+end
+
+=begin
+
+<% @entries.each  {|entry| %>
+
+
+<%= entry %>
+
+<% } %>
+=end
+
+
