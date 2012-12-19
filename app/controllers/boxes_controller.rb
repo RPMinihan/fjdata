@@ -27,7 +27,7 @@ class BoxesController < ApplicationController
 	  
 	  
 	    xml.Sample do
-			xml.DataSet(:uri => entry)
+			xml.DataSet(:uri => entry.gsub(/ /, "%20"))
 			end
 		
 	              }
